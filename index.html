@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doodle Baseball - Kostenloses Online Baseball Spiel | Spielen Sie jetzt!</title>
+    <meta name="description" content="Spielen Sie Doodle Baseball kostenlos online! Das beliebte Google Doodle Baseball Spiel mit einfachen Regeln und endlosem Spaß. Keine Downloads erforderlich - direkt im Browser spielen.">
+    <meta name="keywords" content="Doodle Baseball, Google Doodle, Baseball Spiel, Online Spiel, kostenlos spielen, Browser Spiel, Baseball Game">
+    <meta name="author" content="Doodle Baseball">
+    <meta name="robots" content="index, follow">
+    <link rel="manifest" href="https://jordnanblee.github.io/manifest.json" />
+<link rel="shortcut icon" href="https://jordnanblee.github.io/favicon.ico">
+<link rel="canonical" href="https://jordnanblee.github.io/doodlebaseball/">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Doodle Baseball - Kostenloses Online Baseball Spiel">
+    <meta property="og:description" content="Das beliebte Google Doodle Baseball Spiel - kostenlos und ohne Download im Browser spielen!">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MDAiIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSIjMUE3MzNFIi8+Cjx0ZXh0IHg9IjYwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIj5Eb29kbGUgQmFzZWJhbGw8L3RleHQ+Cjwvc3ZnPgo=">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Doodle Baseball - Kostenloses Online Baseball Spiel">
+    <meta name="twitter:description" content="Das beliebte Google Doodle Baseball Spiel - kostenlos und ohne Download im Browser spielen!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNGRkZGRkYiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIiIGZpbGw9IiMxQTczM0UiLz4KPHA+IDxwYXRoIGQ9Ik0xMiA5TDIwIDlMMTggMTFIMTRMMTIgOVoiIGZpbGw9IiNGRkZGRkYiLz4KPHBhdGggZD0iTTE0IDEzTDE4IDEzTDE4IDE3SDE0VjEzWiIgZmlsbD0iI0ZGRkZGRiIvPgo8cGF0aCBkPSJNMTIgMTlMMjAgMTlMMTggMjFIMTRMMTIgMTlaIiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjIzIiBjeT0iMTYiIHI9IjMiIGZpbGw9IiNGRkZGRkYiLz4KPC9zdmc+Cg==" type="image/svg+xml">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Doodle Baseball",
+      "description": "Kostenloses Online Baseball Spiel basierend auf dem beliebten Google Doodle",
+      "genre": "Sport",
+      "gamePlatform": "Web Browser",
+      "operatingSystem": "Any",
+      "applicationCategory": "Game",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(255, 107, 107, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 107, 107, 0.4);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Game Container */
+        .game-section {
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            margin: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .game-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .game-header h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .game-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .game-frame-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .game-frame {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+        }
+        
+        .fullscreen-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 0.7rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .fullscreen-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: scale(1.1);
+        }
+        
+        /* Ad Block - Only for PC */
+        .ad-container {
+            max-width: 728px;
+            height: 90px;
+            margin: 2rem auto;
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* SEO Content */
+        .content-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            color: white;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .content-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .content-card p {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .seo-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+        }
+        
+        .seo-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .seo-content p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 4rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .ad-container {
+                display: none;
+            }
+            
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .game-section {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+            
+            .game-frame {
+                height: 400px;
+            }
+            
+            .game-controls {
+                gap: 0.5rem;
+            }
+            
+            .control-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .seo-content {
+                padding: 2rem 1rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .ad-container {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 1199px) {
+            .ad-container {
+                display: none;
+            }
+        }
+        
+        /* Fullscreen styles */
+        .game-frame-container.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            border-radius: 0;
+            padding: 0;
+        }
+        
+        .game-frame-container.fullscreen .game-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+        }
+        
+        .game-frame-container.fullscreen .fullscreen-btn {
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">⚾</div>
+                Doodle Baseball
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>🎮 Doodle Baseball Spielen</h1>
+            <p>Das beliebte Google Doodle Baseball Spiel - kostenlos und ohne Download im Browser spielen!</p>
+            <a href="#spiel" class="cta-button">Jetzt Spielen! ⚾</a>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="spiel" class="game-section">
+        <div class="game-container">
+            <div class="game-header">
+                <h2>🏟️ Doodle Baseball</h2>
+                <div class="game-controls">
+                    <button class="control-btn" onclick="refreshGame()">🔄 Neu Laden</button>
+                    <button class="control-btn" onclick="toggleSound()">🔊 Sound</button>
+                    <button class="control-btn" onclick="showControls()">⌨️ Steuerung</button>
+                </div>
+            </div>
+            
+            <div class="game-frame-container" id="gameContainer">
+                <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Vollbild">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+                    </svg>
+                </button>
+                <iframe 
+                    src="https://doodlebaseball.pages.dev/" 
+                    class="game-frame" 
+                    id="gameFrame"
+                    title="Doodle Baseball Spiel"
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Block (Only PC) -->
+    <div class="ad-container">
+        <div>🎯 Werbeplatz 728x90 - Nur für Desktop-Benutzer</div>
+    </div>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="content-grid">
+            <div class="content-card">
+                <h3>🎮 Einfaches Gameplay</h3>
+                <p>Doodle Baseball bietet intuitives Gameplay für Spieler aller Altersgruppen. Treffen Sie den Ball mit perfektem Timing und erzielen Sie Home Runs!</p>
+            </div>
+            <div class="content-card">
+                <h3>🏆 Kostenlos Spielen</h3>
+                <p>Völlig kostenlos und ohne Downloads. Spielen Sie direkt in Ihrem Browser - keine Installation oder Registrierung erforderlich!</p>
+            </div>
+            <div class="content-card">
+                <h3>📱 Vollständig Responsiv</h3>
+                <p>Spielen Sie auf jedem Gerät - Desktop, Tablet oder Smartphone. Das Spiel passt sich automatisch an Ihre Bildschirmgröße an.</p>
+            </div>
+        </div>
+        
+        <div class="seo-content">
+            <h2>Über Doodle Baseball - Das ultimative Online-Baseball-Erlebnis</h2>
+            <p>
+                <strong>Doodle Baseball</strong> ist eine der beliebtesten Varianten der berühmten Google Doodle Games. Dieses fesselnde Baseball-Spiel kombiniert einfache Steuerung mit süchtig machender Gameplay-Mechanik, die Millionen von Spielern weltweit begeistert hat. Das Spiel wurde ursprünglich als Google Doodle zur Feier der Baseball-Saison entwickelt und hat sich zu einem eigenständigen Online-Klassiker entwickelt.
+            </p>
+            <p>
+                Die Spielmechanik ist bewusst einfach gehalten: Spieler müssen den perfekten Zeitpunkt finden, um den Ball zu treffen und möglichst viele Runs zu erzielen. Jeder Schlag erfordert Präzision und Timing, was das Spiel sowohl zugänglich für Anfänger als auch herausfordernd für erfahrene Spieler macht. Die charming Doodle-Grafiken und die intuitive Benutzeroberfläche machen jede Spielsession zu einem visuellen Vergnügen.
+            </p>
+            <p>
+                Was Doodle Baseball besonders auszeichnet, ist seine Zugänglichkeit. Das Spiel läuft vollständig im Browser ohne Downloads, Plugins oder Registrierung. Diese Einfachheit hat dazu beigetragen, dass es zu einem der meistgespielten Casual Games im Internet geworden ist. Egal ob in der Pause, zu Hause oder unterwegs - Doodle Baseball ist immer nur einen Klick entfernt.
+            </p>
+            <p>
+                Die Popularität von Doodle Baseball zeigt sich auch in der aktiven Community von Spielern, die Tipps, Tricks und Highscores teilen. Das Spiel hat bewiesen, dass großartiges Gaming nicht immer komplexe Grafiken oder aufwendige Storylines benötigt - manchmal reichen ein Ball, ein Schläger und perfektes Timing für stundenlangen Spielspaß.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Doodle Baseball. Alle Rechte vorbehalten. Spiel verantwortlich!</p>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Game functions
+        function refreshGame() {
+            const gameFrame = document.getElementById('gameFrame');
+            gameFrame.src = gameFrame.src;
+        }
+
+        let soundEnabled = true;
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = event.target;
+            btn.textContent = soundEnabled ? '🔊 Sound' : '🔇 Stumm';
+        }
+
+        function showControls() {
+            alert('🎮 Steuerung:\n\n• Maus klicken oder Leertaste: Schlagen\n• Timing ist alles!\n• Versuche den Ball im perfekten Moment zu treffen\n• Erziele so viele Home Runs wie möglich!');
+        }
+
+        // Fullscreen functionality
+        function toggleFullscreen() {
+            const container = document.getElementById('gameContainer');
+            const btn = event.target.closest('.fullscreen-btn');
+            
+            if (container.classList.contains('fullscreen')) {
+                // Exit fullscreen
+                container.classList.remove('fullscreen');
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>';
+                btn.title = 'Vollbild';
+                
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            } else {
+                // Enter fullscreen
+                container.classList.add('fullscreen');
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>';
+                btn.title = 'Vollbild verlassen';
+                
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.mozRequestFullScreen) {
+                    container.mozRequestFullScreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+            }
+        }
+
+        // Handle fullscreen change events
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+        document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+        function handleFullscreenChange() {
+            const container = document.getElementById('gameContainer');
+            const btn = container.querySelector('.fullscreen-btn');
+            
+            if (!document.fullscreenElement && !document.webkitFullscreenElement && 
+                !document.mozFullScreenElement && !document.msFullscreenElement) {
+                container.classList.remove('fullscreen');
+                btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>';
+                btn.title = 'Vollbild';
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+  <script>if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/sw.js')
+.then(registration => {console.log('Service Worker registered successfully:', registration);})
+.catch(error => {console.log('Error in Service Worker registration:', error);});});}</script>
+<script src="https://cdn.counter.dev/script.js" data-id="765b5d93-838f-4789-a97e-d18e533d9baf" data-utcoffset="3"></script>
+</body>
+</html>
